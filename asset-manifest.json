@@ -1,0 +1,15 @@
+{
+  "files": {
+    "main.css": "/boggler2/static/css/main.3bd1e8fe.css",
+    "main.js": "/boggler2/static/js/main.c385ad16.js",
+    "static/js/787.1fe0f3a7.chunk.js": "/boggler2/static/js/787.1fe0f3a7.chunk.js",
+    "index.html": "/boggler2/index.html",
+    "main.3bd1e8fe.css.map": "/boggler2/static/css/main.3bd1e8fe.css.map",
+    "main.c385ad16.js.map": "/boggler2/static/js/main.c385ad16.js.map",
+    "787.1fe0f3a7.chunk.js.map": "/boggler2/static/js/787.1fe0f3a7.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.3bd1e8fe.css",
+    "static/js/main.c385ad16.js"
+  ]
+}
