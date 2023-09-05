@@ -6,10 +6,6 @@
   font-size: 18px;
 }
 
-body {
-  background: var(--primary-color-light);
-}
-
 button {
   background-color: var(--board-color);
   padding: 10px;
@@ -40,8 +36,13 @@ select {
 
 .App {
   width: 100vw;
+  height: 100vh;
   display: flex;
   justify-content: center;
+}
+
+.App__dark {
+  background: black;
 }
 
 .app-container {
@@ -91,6 +92,11 @@ select {
   background: var(--primary-color-light);
   color: var(--primary-color-dark);
   margin: 2%;
+}
+
+.dice__dark {
+  color: var(--primary-color-light);
+  background: var(--primary-color-dark);
 }
 
 .options {

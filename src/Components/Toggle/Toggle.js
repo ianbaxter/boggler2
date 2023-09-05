@@ -1,14 +1,19 @@
+import { useContext } from "react";
 import "./Toggle.css";
+import { ThemeContext } from "../../context/ThemeContext";
 
-const Toggle = ({ toggleDarkMode }) => {
+const Toggle = () => {
+  const theme = useContext(ThemeContext);
+
   return (
     <div className="toggle">
-      <label className="switch" htmlFor="dark-mode-toggle">
+      <label className="switch" htmlFor="theme-toggle">
         <input
-          id="dark-mode-toggle"
+          id="theme-toggle"
           aria-label="Dark Mode Toggle"
           type="checkbox"
-          onChange={toggleDarkMode}
+          checked={theme.isDarkTheme}
+          onChange={theme.toggleTheme}
         />
         <span className="slider">
           <svg

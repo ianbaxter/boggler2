@@ -1,11 +1,14 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
 import diceBag from "./diceBag";
 import "./App.css";
 import Timer from "../Timer/Timer";
+import { ThemeContext } from "../../context/ThemeContext";
 
 function App() {
   const [board, setBoard] = useState([]);
   const [playing, setPlaying] = useState(false);
+
+  const theme = useContext(ThemeContext);
 
   useEffect(() => {
     setBoard(newBoard(diceBag.sixBySixDice));
@@ -53,17 +56,6 @@ function App() {
     }
   };
 
-  const pasteBoard = async () => {
-    const codedBoard = await navigator.clipboard.readText();
-    const decodedBoard = codedBoard.split(/(?=[A-Z#])/).map((value) => {
-      if (value === "#" || value.length === 2) {
-        return value;
-      } else if (value === "A") return "Z";
-      return String.fromCharCode(value.charCodeAt(0) - 1);
-    });
-    if (decodedBoard.length === board.length) setBoard(decodedBoard);
-  };
-
   const copyBoard = () => {
     let secretBoard = board.map((value) => {
       if (value === "#" || value.length === 2) {
@@ -75,8 +67,19 @@ function App() {
     navigator.clipboard.writeText(copyText);
   };
 
+  const pasteBoard = async () => {
+    const codedBoard = await navigator.clipboard.readText();
+    const decodedBoard = codedBoard.split(/(?=[A-Z#])/).map((value) => {
+      if (value === "#" || value.length === 2) {
+        return value;
+      } else if (value === "A") return "Z";
+      return String.fromCharCode(value.charCodeAt(0) - 1);
+    });
+    if (decodedBoard.length === board.length) setBoard(decodedBoard);
+  };
+
   return (
-    <main className="App">
+    <main className={theme.isDarkTheme ? "App App__dark" : "App"}>
       <div className="app-container">
         <Timer playing={playing} setPlaying={setPlaying} />
         <section className="board-container">
@@ -90,7 +93,7 @@ function App() {
             }
           >
             {board.map((value, index) => (
-              <div key={index} className="dice">
+              <div key={index} className={theme.isDarkTheme ? "dice dice__dark" : "dice"}>
                 {value}
               </div>
             ))}

@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import "./Timer.css";
 import Toggle from "../Toggle/Toggle";
 
@@ -7,15 +7,6 @@ const Timer = ({ playing, setPlaying }) => {
   const [timerStart, setTimerStart] = useState("04:00");
   const [intervalId, setIntervalId] = useState();
   const [isTimeUp, setIsTimeUp] = useState(false);
-  const [darkMode, setDarkMode] = useState(false);
-
-  useEffect(() => {
-    let isDarkMode = localStorage.getItem("isDarkMode") === "true";
-    if (isDarkMode) {
-      toggleDarkMode();
-      document.getElementById("dark-mode-toggle").checked = true;
-    }
-  }, []);
 
   const setTimerTo = (e) => {
     let newTimer = e.target.value;
@@ -51,24 +42,10 @@ const Timer = ({ playing, setPlaying }) => {
     }
   };
 
-  const toggleDarkMode = () => {
-    let root = document.documentElement;
-    if (!darkMode) {
-      root.style.setProperty("--primary-color-light", "black");
-      root.style.setProperty("--primary-color-dark", "white");
-    } else {
-      root.style.setProperty("--primary-color-light", "white");
-      root.style.setProperty("--primary-color-dark", "black");
-    }
-    let darkModeStatus = !darkMode;
-    localStorage.setItem("isDarkMode", JSON.stringify(darkModeStatus));
-    setDarkMode(darkModeStatus);
-  };
-
   return (
     <section className="timer-container">
       <button onClick={startCountdown}>{playing ? "Reset" : "Start"}</button>
-      <Toggle toggleDarkMode={toggleDarkMode} />
+      <Toggle />
       {playing ? (
         <p className={isTimeUp ? "counddown countdown__time-up" : "counddown"}>
           <strong>{timer}</strong>
