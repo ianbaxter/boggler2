@@ -1,0 +1,18 @@
+.timer-container {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  color: var(--primary-color-dark);
+  align-items: center;
+}
+
+.counddown {
+  display: flex;
+  justify-content: center;
+  padding: 10px;
+  border-radius: 7px;
+}
+
+.countdown__time-up {
+  background: var(--alert-color);
+  color: var(--button-text-color);
+}/*# sourceMappingURL=Timer.css.map */
